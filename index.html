@@ -2,15 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Our First Month</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anni Hong - Calendar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Our First Month Together</h1>
-    <div id="calendar"></div>
-    <div id="note-display" class="hidden">
-        <p id="note-text"></p>
-        <div id="note-images"></div>
+    <div class="calendar">
+        <div class="grid">
+            <!-- Generate 7 days, for simplicity, using placeholders -->
+            <div class="day" data-day="1">1</div>
+            <div class="day" data-day="2">2</div>
+            <div class="day" data-day="3">3</div>
+            <div class="day" data-day="4">4</div>
+            <div class="day" data-day="5">5</div>
+            <div class="day" data-day="6">6</div>
+            <div class="day" data-day="7">7</div>
+        </div>
+    </div>
+    <div id="note-card" class="note-card" style="display:none;">
+        <p id="note-text">Love note here!</p>
+        <img id="note-img" src="" alt="Image" />
     </div>
     <script src="script.js"></script>
 </body>
