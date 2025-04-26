@@ -421,7 +421,7 @@
           id="modal-title"
           class="text-3xl font-handwriting text-blue-700 mb-4 text-center select-none"
         >
-          Love Memories
+          Memories & Love Notes
         </h3>
         <div id="modal-content" class="flex flex-col gap-4 font-note"></div>
       </div>
@@ -445,14 +445,14 @@
           },
           {
             src:
-              'https://placehold.co/400x300/pink-100/pink-500?text=First+Date+y',
+              'https://placehold.co/400x300/pink-100/pink-500?text=First+Date+Memory',
             alt: 'A cozy cafe table with two cups of coffee and a small bouquet of flowers, pastel pink tone',
           },
         ],
       },
       '2025-03-27': {
         note:
-          "Day 2: I love how your smile lights up my day. Can't wait to make more ies with you.",
+          "Day 2: I love how your smile lights up my day. Can't wait to make more memories with you.",
         images: [
           {
             src:
@@ -803,11 +803,11 @@
     const modalClose = document.getElementById('modal-close');
     const dateButtons = document.querySelectorAll('.date-btn');
 
-    function showyModal(date) {
-      const y = ies[date];
-      if (!y) {
+    function showMemoryModal(date) {
+      const memory = memories[date];
+      if (!memory) {
         modalContent.innerHTML =
-          '<p class="text-blue-600 font-note text-lg text-center select-none">No ies for this day yet. Please add some!</p>';
+          '<p class="text-blue-600 font-note text-lg text-center select-none">No memories for this day yet. Please add some!</p>';
       } else {
         let html = `<p class="text-blue-700 font-note text-lg whitespace-pre-line">${memory.note}</p>`;
         if (memory.images && memory.images.length > 0) {
