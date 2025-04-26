@@ -1,8 +1,0 @@
-document.querySelectorAll('.day').forEach(day => {
-    day.addEventListener('click', function() {
-        let day = this.getAttribute('data-day');
-        document.getElementById('note-text').innerText = 'Love note for day ' + day;
-        document.getElementById('note-img').src = 'https://via.placeholder.com/150';  // Placeholder image URL
-        document.getElementById('note-card').style.display = 'block';
-    });
-});
