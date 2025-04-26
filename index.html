@@ -5,7 +5,7 @@
   <title>Our 1st Month Anniversary</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Dancing+Script&family=Roboto+Slab&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Amsterdam+One&display=swap"
     rel="stylesheet"
   />
   <link
@@ -17,9 +17,15 @@
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(135deg, #c3dafe 0%, #fbcfe8 50%, #ffffff 100%);
       min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
     }
     .font-heading {
-      font-family: 'Roboto Slab', serif;
+      font-family: 'Times New Roman', serif;
       font-weight: 600;
     }
     .font-note {
@@ -28,7 +34,7 @@
       line-height: 1.5;
     }
     .font-handwriting {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Amsterdam One', cursive, serif;
       font-weight: 600;
     }
     /* Scrollbar for notes container */
@@ -55,12 +61,12 @@
     }
     /* "Click a Date..." text with 2 lines, larger size */
     .click-date-text {
-      font-size: 1.25rem; /* 20px */
+      font-size: 2rem; /* increased size */
       line-height: 1.2;
       white-space: normal;
       letter-spacing: 0.03em;
       user-select: none;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
     /* Date buttons font: basic modern sans-serif */
     .date-btn {
@@ -77,10 +83,33 @@
     .date-btn:hover {
       cursor: pointer;
     }
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .grid-cols-7-equal {
+        max-width: 100%;
+        gap: 0.3rem 0.3rem;
+      }
+      .click-date-text {
+        font-size: 1.5rem;
+      }
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      main {
+        width: 100%;
+        max-width: 100%;
+      }
+      section#calendar {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-4">
-  <header class="mb-6 text-center">
+<body>
+  <header class="mb-6 text-center w-full max-w-4xl">
     <h1 class="text-4xl md:text-5xl font-handwriting text-blue-700 select-none drop-shadow-sm">
       Our 1st Month Anniversary
     </h1>
@@ -90,10 +119,9 @@
   </header>
 
   <main class="w-full max-w-4xl flex flex-col md:flex-row gap-6">
-    <!-- Calendar -->
     <section
       id="calendar"
-      class="bg-white/90 backdrop-blur-md rounded-3xl shadow-lg p-6 w-full md:w-2/3 max-w-3xl"
+      class="bg-white/90 backdrop-blur-md rounded-3xl shadow-lg p-6 w-full md:w-2/3 max-w-3xl mx-auto"
     >
       <h2 class="font-heading text-blue-500 text-center click-date-text">
         Click a Date<br />to see Our Memories
@@ -107,12 +135,10 @@
         <div>Fri</div>
         <div>Sat</div>
 
-        <!-- Blank days before 26 March 2025 (Wednesday) -->
-        <div></div> <!-- Sunday -->
-        <div></div> <!-- Monday -->
-        <div></div> <!-- Tuesday -->
+        <div></div>
+        <div></div>
+        <div></div>
 
-        <!-- Days 26 March to 31 March -->
         <button
           data-date="2025-03-26"
           class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
@@ -162,7 +188,6 @@
           31
         </button>
 
-        <!-- April 2025 days 1 to 26 -->
         <button
           data-date="2025-04-01"
           class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
@@ -374,7 +399,6 @@
       </div>
     </section>
 
-    <!-- Notes & Pictures Modal -->
     <div
       id="modal"
       class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
@@ -404,13 +428,11 @@
     </div>
   </main>
 
-  <footer class="mt-10 text-center text-blue-400 font-heading select-none drop-shadow-sm">
+  <footer class="mt-10 text-center text-blue-400 font-heading select-none drop-shadow-sm w-full max-w-4xl">
     <p>Made with ❤️ for our love story</p>
   </footer>
 
   <script>
-    // Data for each date: note and images
-    // You can change the notes and images here as you want
     const memories = {
       '2025-03-26': {
         note:
@@ -829,7 +851,6 @@
       }
     });
 
-    // Automatically open the modal for the start day (26 March 2025) on load
     window.addEventListener('DOMContentLoaded', () => {
       const startDateBtn = document.querySelector(
         '.date-btn[data-date="2025-03-26"]'
