@@ -1,79 +1,76 @@
-
-const notes = {
-    "2025-03-26": { text: "", images: [] },
-    "2025-03-27": { text: "", images: [] },
-    "2025-03-28": { text: "", images: [] },
-    "2025-03-29": { text: "", images: [] },
-    "2025-03-30": { text: "", images: [] },
-    "2025-03-31": { text: "", images: [] },
-    "2025-04-01": { text: "", images: [] },
-    "2025-04-02": { text: "", images: [] },
-    "2025-04-03": { text: "", images: [] },
-    "2025-04-04": { text: "", images: [] },
-    "2025-04-05": { text: "", images: [] },
-    "2025-04-06": { text: "", images: [] },
-    "2025-04-07": { text: "", images: [] },
-    "2025-04-08": { text: "", images: [] },
-    "2025-04-09": { text: "", images: [] },
-    "2025-04-10": { text: "", images: [] },
-    "2025-04-11": { text: "", images: [] },
-    "2025-04-12": { text: "", images: [] },
-    "2025-04-13": { text: "", images: [] },
-    "2025-04-14": { text: "", images: [] },
-    "2025-04-15": { text: "", images: [] },
-    "2025-04-16": { text: "", images: [] },
-    "2025-04-17": { text: "", images: [] },
-    "2025-04-18": { text: "", images: [] },
-    "2025-04-19": { text: "", images: [] },
-    "2025-04-20": { text: "", images: [] },
-    "2025-04-21": { text: "", images: [] },
-    "2025-04-22": { text: "", images: [] },
-    "2025-04-23": { text: "", images: [] },
-    "2025-04-24": { text: "", images: [] },
-    "2025-04-25": { text: "", images: [] },
-    "2025-04-26": { text: "", images: [] }
-};
-
-const calendar = document.getElementById("calendar");
-const noteDisplay = document.getElementById("note-display");
-const noteText = document.getElementById("note-text");
-const noteImages = document.getElementById("note-images");
-
-function formatDate(date) {
-    return date.toISOString().split('T')[0];
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-// Tạo các ngày từ 26/03 đến 26/04
-const startDate = new Date("2025-03-26");
-const endDate = new Date("2025-04-26");
-let currentDate = new Date(startDate);
-
-while (currentDate <= endDate) {
-    const dateStr = formatDate(currentDate);
-    const dayDiv = document.createElement("div");
-    dayDiv.className = "day";
-    dayDiv.textContent = dateStr.slice(5);
-    dayDiv.onclick = () => showNote(dateStr);
-    calendar.appendChild(dayDiv);
-    currentDate.setDate(currentDate.getDate() + 1);
+.calendar {
+    margin: 20px auto;
 }
 
-function showNote(date) {
-    const note = notes[date];
-    if (note) {
-        noteText.textContent = note.text || "";
-        noteImages.innerHTML = "";
-        if (note.images && note.images.length > 0) {
-            note.images.forEach(src => {
-                const img = document.createElement("img");
-                img.src = src;
-                noteImages.appendChild(img);
-            });
-        }
-        noteDisplay.classList.remove("hidden");
-    } else {
-        noteText.textContent = "No memory saved for this day.";
-        noteImages.innerHTML = "";
-        noteDisplay.classList.remove("hidden");
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.day {
+    padding: 20px;
+    background-color: #f0f0f0;
+    font-size: 18px;
+    color: #a0a0a0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.day:hover {
+    background-color: #ffb3cc;
+}
+
+.note-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on small screens */
+    }
+
+    .day {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .note-card {
+        width: 90%; /* Make the card responsive */
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on very small screens */
+    }
+
+    .day {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .note-card {
+        width: 95%; /* Make the card full width */
+        padding: 10px;
     }
 }
