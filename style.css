@@ -1,0 +1,51 @@
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fff5f8;
+    color: #444;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: #ff90b3;
+}
+
+#calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.day {
+    width: 100px;
+    height: 100px;
+    background-color: #ffe0ec;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.day:hover {
+    background-color: #ffc8dd;
+}
+
+#note-display {
+    margin-top: 30px;
+}
+
+#note-images img {
+    max-width: 100px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.hidden {
+    display: none;
+}
