@@ -1,51 +1,8 @@
-
-body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-color: #fff5f8;
-    color: #444;
-    text-align: center;
-    padding: 20px;
-}
-
-h1 {
-    font-family: 'Pacifico', cursive;
-    color: #ff90b3;
-}
-
-#calendar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.day {
-    width: 100px;
-    height: 100px;
-    background-color: #ffe0ec;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.day:hover {
-    background-color: #ffc8dd;
-}
-
-#note-display {
-    margin-top: 30px;
-}
-
-#note-images img {
-    max-width: 100px;
-    margin: 5px;
-    border-radius: 8px;
-}
-
-.hidden {
-    display: none;
-}
+document.querySelectorAll('.day').forEach(day => {
+    day.addEventListener('click', function() {
+        let day = this.getAttribute('data-day');
+        document.getElementById('note-text').innerText = 'Love note for day ' + day;
+        document.getElementById('note-img').src = 'https://via.placeholder.com/150';  // Placeholder image URL
+        document.getElementById('note-card').style.display = 'block';
+    });
+});
