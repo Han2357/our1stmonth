@@ -1,28 +1,843 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anni Hong - Calendar</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our 1st Month Anniversary</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Dancing+Script&family=Roboto+Slab&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #c3dafe 0%, #fbcfe8 50%, #ffffff 100%);
+      min-height: 100vh;
+    }
+    .font-heading {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 600;
+    }
+    .font-note {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .font-handwriting {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 600;
+    }
+    /* Scrollbar for notes container */
+    .notes-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .notes-scroll::-webkit-scrollbar-thumb {
+      background-color: #a5b4fc;
+      border-radius: 10px;
+    }
+    /* Balance gap for weekdays header */
+    .weekdays > div {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+    /* Equal width columns for weekdays and dates */
+    .grid-cols-7-equal {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.4rem 0.5rem;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* "Click a Date..." text with 2 lines, larger size */
+    .click-date-text {
+      font-size: 1.25rem; /* 20px */
+      line-height: 1.2;
+      white-space: normal;
+      letter-spacing: 0.03em;
+      user-select: none;
+      margin-bottom: 0.75rem;
+    }
+    /* Date buttons font: basic modern sans-serif */
+    .date-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem; /* 14px */
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+      transition: background-color 0.3s ease;
+    }
+    .date-btn:hover {
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body>
-    <div class="calendar">
-        <div class="grid">
-            <!-- Generate 7 days, for simplicity, using placeholders -->
-            <div class="day" data-day="1">1</div>
-            <div class="day" data-day="2">2</div>
-            <div class="day" data-day="3">3</div>
-            <div class="day" data-day="4">4</div>
-            <div class="day" data-day="5">5</div>
-            <div class="day" data-day="6">6</div>
-            <div class="day" data-day="7">7</div>
-        </div>
+<body class="min-h-screen flex flex-col items-center p-4">
+  <header class="mb-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-handwriting text-blue-700 select-none drop-shadow-sm">
+      Our 1st Month Anniversary
+    </h1>
+    <p class="text-pink-400 mt-1 text-base md:text-lg font-heading select-none tracking-wide drop-shadow-sm">
+      26.03.25 - 26.04.25
+    </p>
+  </header>
+
+  <main class="w-full max-w-4xl flex flex-col md:flex-row gap-6">
+    <!-- Calendar -->
+    <section
+      id="calendar"
+      class="bg-white/90 backdrop-blur-md rounded-3xl shadow-lg p-6 w-full md:w-2/3 max-w-3xl"
+    >
+      <h2 class="font-heading text-blue-500 text-center click-date-text">
+        Click a Date<br />to see Our Memories
+      </h2>
+      <div class="grid-cols-7-equal text-center select-none weekdays text-blue-400 font-semibold text-xs md:text-sm">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+
+        <!-- Blank days before 26 March 2025 (Wednesday) -->
+        <div></div> <!-- Sunday -->
+        <div></div> <!-- Monday -->
+        <div></div> <!-- Tuesday -->
+
+        <!-- Days 26 March to 31 March -->
+        <button
+          data-date="2025-03-26"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="March 26, 2025"
+        >
+          26
+        </button>
+        <button
+          data-date="2025-03-27"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="March 27, 2025"
+        >
+          27
+        </button>
+        <button
+          data-date="2025-03-28"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="March 28, 2025"
+        >
+          28
+        </button>
+        <button
+          data-date="2025-03-29"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="March 29, 2025"
+        >
+          29
+        </button>
+        <button
+          data-date="2025-03-30"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="March 30, 2025"
+        >
+          30
+        </button>
+        <button
+          data-date="2025-03-31"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="March 31, 2025"
+        >
+          31
+        </button>
+
+        <!-- April 2025 days 1 to 26 -->
+        <button
+          data-date="2025-04-01"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 1, 2025"
+        >
+          1
+        </button>
+        <button
+          data-date="2025-04-02"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 2, 2025"
+        >
+          2
+        </button>
+        <button
+          data-date="2025-04-03"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 3, 2025"
+        >
+          3
+        </button>
+        <button
+          data-date="2025-04-04"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 4, 2025"
+        >
+          4
+        </button>
+        <button
+          data-date="2025-04-05"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 5, 2025"
+        >
+          5
+        </button>
+        <button
+          data-date="2025-04-06"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 6, 2025"
+        >
+          6
+        </button>
+        <button
+          data-date="2025-04-07"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 7, 2025"
+        >
+          7
+        </button>
+        <button
+          data-date="2025-04-08"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 8, 2025"
+        >
+          8
+        </button>
+        <button
+          data-date="2025-04-09"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 9, 2025"
+        >
+          9
+        </button>
+        <button
+          data-date="2025-04-10"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 10, 2025"
+        >
+          10
+        </button>
+        <button
+          data-date="2025-04-11"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 11, 2025"
+        >
+          11
+        </button>
+        <button
+          data-date="2025-04-12"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 12, 2025"
+        >
+          12
+        </button>
+        <button
+          data-date="2025-04-13"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 13, 2025"
+        >
+          13
+        </button>
+        <button
+          data-date="2025-04-14"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 14, 2025"
+        >
+          14
+        </button>
+        <button
+          data-date="2025-04-15"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 15, 2025"
+        >
+          15
+        </button>
+        <button
+          data-date="2025-04-16"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 16, 2025"
+        >
+          16
+        </button>
+        <button
+          data-date="2025-04-17"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 17, 2025"
+        >
+          17
+        </button>
+        <button
+          data-date="2025-04-18"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 18, 2025"
+        >
+          18
+        </button>
+        <button
+          data-date="2025-04-19"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 19, 2025"
+        >
+          19
+        </button>
+        <button
+          data-date="2025-04-20"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 20, 2025"
+        >
+          20
+        </button>
+        <button
+          data-date="2025-04-21"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 21, 2025"
+        >
+          21
+        </button>
+        <button
+          data-date="2025-04-22"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 22, 2025"
+        >
+          22
+        </button>
+        <button
+          data-date="2025-04-23"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 23, 2025"
+        >
+          23
+        </button>
+        <button
+          data-date="2025-04-24"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 24, 2025"
+        >
+          24
+        </button>
+        <button
+          data-date="2025-04-25"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-200 to-blue-200 hover:from-pink-300 hover:to-blue-300 text-blue-700"
+          type="button"
+          aria-label="April 25, 2025"
+        >
+          25
+        </button>
+        <button
+          data-date="2025-04-26"
+          class="date-btn rounded-xl bg-gradient-to-tr from-pink-300 to-blue-300 hover:from-pink-400 hover:to-blue-400 text-blue-900 font-heading font-semibold"
+          type="button"
+          aria-label="April 26, 2025"
+        >
+          26
+        </button>
+      </div>
+    </section>
+
+    <!-- Notes & Pictures Modal -->
+    <div
+      id="modal"
+      class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div
+        class="bg-white rounded-3xl shadow-lg max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 relative"
+      >
+        <button
+          id="modal-close"
+          class="absolute top-4 right-4 text-blue-600 hover:text-blue-800 focus:outline-none"
+          aria-label="Close modal"
+        >
+          <i class="fas fa-times fa-lg"></i>
+        </button>
+        <h3
+          id="modal-title"
+          class="text-3xl font-handwriting text-blue-700 mb-4 text-center select-none"
+        >
+          Memories & Love Notes
+        </h3>
+        <div id="modal-content" class="flex flex-col gap-4 font-note"></div>
+      </div>
     </div>
-    <div id="note-card" class="note-card" style="display:none;">
-        <p id="note-text">Love note here!</p>
-        <img id="note-img" src="" alt="Image" />
-    </div>
-    <script src="script.js"></script>
+  </main>
+
+  <footer class="mt-10 text-center text-blue-400 font-heading select-none drop-shadow-sm">
+    <p>Made with ❤️ for our love story</p>
+  </footer>
+
+  <script>
+    // Data for each date: note and images
+    // You can change the notes and images here as you want
+    const memories = {
+      '2025-03-26': {
+        note:
+          "Our first day of this beautiful journey. I still remember the butterflies in my stomach when we met. Here's to many more days like this!",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/pink-200/pink-600?text=Our+First+Day+Together+Photo',
+            alt: 'A cute photo of a couple holding hands on their first day together, pastel pink background',
+          },
+          {
+            src:
+              'https://placehold.co/400x300/pink-100/pink-500?text=First+Date+Memory',
+            alt: 'A cozy cafe table with two cups of coffee and a small bouquet of flowers, pastel pink tone',
+          },
+        ],
+      },
+      '2025-03-27': {
+        note:
+          "Day 2: I love how your smile lights up my day. Can't wait to make more memories with you.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/ffb6c1/ff69b4?text=Smiling+Together',
+            alt: 'A couple smiling happily together in a park with cherry blossoms, pastel pink and soft green tones',
+          },
+        ],
+      },
+      '2025-03-28': {
+        note:
+          "Day 3: Our little adventures are the best. Remember our walk by the lake? Pure magic.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/ffd1dc/ff6f91?text=Lake+Walk+Adventure',
+            alt: 'A couple walking hand in hand by a calm lake surrounded by trees with soft pastel colors',
+          },
+        ],
+      },
+      '2025-03-29': {
+        note:
+          "Day 4: I wrote you a little poem today, just to say how much you mean to me.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/ff85a2?text=Love+Poem+Note',
+            alt: 'A handwritten love poem on pastel pink paper with a small heart doodle',
+          },
+        ],
+      },
+      '2025-03-30': {
+        note:
+          "Day 5: Our first movie night was so cozy. I loved cuddling with you and sharing popcorn.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=Movie+Night+Cozy',
+            alt: 'A couple cuddling on a couch with popcorn and soft pink lighting',
+          },
+        ],
+      },
+      '2025-03-31': {
+        note:
+          "Day 6: I cherish every moment with you. Here's a little snapshot from our sunset walk.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Sunset+Walk',
+            alt: 'A couple holding hands walking on a beach during a pastel pink and orange sunset',
+          },
+        ],
+      },
+      '2025-04-01': {
+        note:
+          "Day 7: April Fools' Day but you are no joke, you're my everything. Love you endlessly.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=April+Fools+Fun',
+            alt: 'A playful couple laughing together with pastel pink and purple background',
+          },
+        ],
+      },
+      '2025-04-02': {
+        note:
+          "Day 8: I love how we can be silly and serious all at once. You complete me.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=Silly+Moments',
+            alt: 'A couple making funny faces at each other with pastel pink and lavender tones',
+          },
+        ],
+      },
+      '2025-04-03': {
+        note:
+          "Day 9: Our first shared breakfast was so sweet, just like you.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Breakfast+Together',
+            alt: 'A pastel pink breakfast table with pancakes, strawberries, and two cups of tea',
+          },
+        ],
+      },
+      '2025-04-04': {
+        note:
+          "Day 10: I love the way you look at me. It makes me feel so special.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=Looking+At+You',
+            alt: 'A close-up of a couple gazing into each other’s eyes with soft pastel pink background',
+          },
+        ],
+      },
+      '2025-04-05': {
+        note:
+          "Day 11: Our first little gift exchange. I hope you liked the flowers I picked for you.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=Gift+Flowers',
+            alt: 'A bouquet of pastel pink and white flowers wrapped in delicate paper',
+          },
+        ],
+      },
+      '2025-04-06': {
+        note:
+          "Day 12: I love how you always know how to make me smile, even on tough days.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Smile+Together',
+            alt: 'A couple laughing together under soft pastel pink lighting',
+          },
+        ],
+      },
+      '2025-04-07': {
+        note:
+          "Day 13: Our first little trip to the park was magical. I treasure those moments.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=Park+Trip',
+            alt: 'A couple sitting on a pastel pink blanket in a green park with flowers',
+          },
+        ],
+      },
+      '2025-04-08': {
+        note:
+          "Day 14: Two weeks of love and happiness. I’m so grateful for you.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=Two+Weeks+Together',
+            alt: 'A pastel pink heart drawn on a foggy window with a couple’s reflection',
+          },
+        ],
+      },
+      '2025-04-09': {
+        note:
+          "Day 15: I love how we dream together and plan our future hand in hand.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Dreaming+Together',
+            alt: 'A couple holding hands looking at a pastel pink sky with clouds',
+          },
+        ],
+      },
+      '2025-04-10': {
+        note:
+          "Day 16: Your hugs are my safe place. I feel so loved and protected.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=Warm+Hugs',
+            alt: 'A couple embracing warmly with soft pastel pink and peach background',
+          },
+        ],
+      },
+      '2025-04-11': {
+        note:
+          "Day 17: I love how you listen to me and understand my heart.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=Listening+Heart',
+            alt: 'A couple sitting close, talking softly with pastel pink and cream tones',
+          },
+        ],
+      },
+      '2025-04-12': {
+        note:
+          "Day 18: Our first little dance in the living room was so fun and silly.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Living+Room+Dance',
+            alt: 'A couple dancing playfully in a cozy pastel pink living room',
+          },
+        ],
+      },
+      '2025-04-13': {
+        note:
+          "Day 19: I love how you make ordinary days feel extraordinary.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=Extraordinary+Days',
+            alt: 'A couple smiling and holding hands on a pastel pink background with sparkles',
+          },
+        ],
+      },
+      '2025-04-14': {
+        note:
+          "Day 20: I’m so lucky to have you by my side. You are my sunshine.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=My+Sunshine',
+            alt: 'A couple standing in a field with pastel pink sun rays shining behind them',
+          },
+        ],
+      },
+      '2025-04-15': {
+        note:
+          "Day 21: Our first shared secret made me feel even closer to you.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Shared+Secret',
+            alt: 'A couple whispering to each other with pastel pink and lavender background',
+          },
+        ],
+      },
+      '2025-04-16': {
+        note:
+          "Day 22: I love how you support me and believe in us.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=Support+and+Love',
+            alt: 'A couple holding hands tightly with pastel pink and peach tones',
+          },
+        ],
+      },
+      '2025-04-17': {
+        note:
+          "Day 23: I’m grateful for every smile, every kiss, every moment with you.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=Grateful+Moments',
+            alt: 'A couple sharing a gentle kiss with soft pastel pink background',
+          },
+        ],
+      },
+      '2025-04-18': {
+        note:
+          "Day 24: Our first little picnic was so sweet and peaceful.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Picnic+Day',
+            alt: 'A couple sitting on a pastel pink blanket with picnic basket and flowers',
+          },
+        ],
+      },
+      '2025-04-19': {
+        note:
+          "Day 25: I love how you make me laugh until my cheeks hurt.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=Laughing+Together',
+            alt: 'A couple laughing joyfully with pastel pink and purple background',
+          },
+        ],
+      },
+      '2025-04-20': {
+        note:
+          "Day 26: I’m so proud of us and the love we’re building every day.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=Proud+Together',
+            alt: 'A couple standing back to back smiling with pastel pink and cream background',
+          },
+        ],
+      },
+      '2025-04-21': {
+        note:
+          "Day 27: I love how you hold my hand and never let go.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Holding+Hands',
+            alt: 'Close-up of a couple holding hands with pastel pink and peach tones',
+          },
+        ],
+      },
+      '2025-04-22': {
+        note:
+          "Day 28: Our first little surprise made my heart skip a beat.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=Surprise+Moment',
+            alt: 'A couple surprised with pastel pink balloons and confetti',
+          },
+        ],
+      },
+      '2025-04-23': {
+        note:
+          "Day 29: I love how you always know what I need, even before I say it.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=Understanding+Love',
+            alt: 'A couple sharing a tender moment with pastel pink and cream background',
+          },
+        ],
+      },
+      '2025-04-24': {
+        note:
+          "Day 30: I’m so happy to be sharing this journey with you. Here’s to forever.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Forever+Together',
+            alt: 'A couple holding hands walking into a pastel pink sunset',
+          },
+        ],
+      },
+      '2025-04-25': {
+        note:
+          "Day 31: Tomorrow is our 1st month anniversary! I love you more than words can say.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fadadd/f48fb1?text=Almost+Anniversary',
+            alt: 'A couple hugging with pastel pink and purple heart-shaped balloons',
+          },
+        ],
+      },
+      '2025-04-26': {
+        note:
+          "Our 1st Month Anniversary! Thank you for every moment, every smile, every kiss. I love you forever and always.",
+        images: [
+          {
+            src:
+              'https://placehold.co/400x300/fce4ec/f48fb1?text=1st+Month+Anniversary+Celebration',
+            alt: 'A couple celebrating their 1st month anniversary with pastel pink confetti and balloons',
+          },
+          {
+            src:
+              'https://placehold.co/400x300/f8bbd0/f48fb1?text=Together+Forever',
+            alt: 'A couple holding hands with a pastel pink heart background and soft lighting',
+          },
+        ],
+      },
+    };
+
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalClose = document.getElementById('modal-close');
+    const dateButtons = document.querySelectorAll('.date-btn');
+
+    function showMemoryModal(date) {
+      const memory = memories[date];
+      if (!memory) {
+        modalContent.innerHTML =
+          '<p class="text-blue-600 font-note text-lg text-center select-none">No memories for this day yet. Please add some!</p>';
+      } else {
+        let html = `<p class="text-blue-700 font-note text-lg whitespace-pre-line">${memory.note}</p>`;
+        if (memory.images && memory.images.length > 0) {
+          html += '<div class="flex flex-col gap-4 mt-4">';
+          memory.images.forEach((img) => {
+            html += `<img src="${img.src}" alt="${img.alt}" class="rounded-2xl shadow-md object-cover max-h-48 w-full" loading="lazy" />`;
+          });
+          html += '</div>';
+        }
+        modalContent.innerHTML = html;
+      }
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    dateButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const date = btn.getAttribute('data-date');
+        showMemoryModal(date);
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+        closeModal();
+      }
+    });
+
+    // Automatically open the modal for the start day (26 March 2025) on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const startDateBtn = document.querySelector(
+        '.date-btn[data-date="2025-03-26"]'
+      );
+      if (startDateBtn) {
+        startDateBtn.click();
+      }
+    });
+  </script>
 </body>
 </html>
